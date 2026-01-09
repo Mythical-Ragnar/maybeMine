@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special 👑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #ff6b9d;
+            text-shadow: 3px 3px 0px #fff;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #8e44ad;
+            margin: 20px 0;
+        }
+
+        /* Chibi Character Styles */
+        .chibi-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            padding: 20px;
+        }
+
+        .chibi-card {
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 4px solid transparent;
+            position: relative;
+        }
+
+        .chibi-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: #ff6b9d;
+            box-shadow: 0 20px 40px rgba(255,107,157,0.3);
+        }
+
+        .chibi-character {
+            width: 140px;
+            height: 160px;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+
+        /* Chibi Head */
+        .chibi-head {
+            width: 90px;
+            height: 95px;
+            background: #ffd4a3;
+            border-radius: 45% 45% 40% 40%;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Chibi Hair */
+        .chibi-hair {
+            width: 100px;
+            height: 70px;
+            background: #2c1810;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .chibi-hair::before,
+        .chibi-hair::after {
+            content: '';
+            position: absolute;
+            background: #2c1810;
+            border-radius: 50%;
+        }
+
+        .chibi-hair::before {
+            width: 40px;
+            height: 60px;
+            top: 20px;
+            left: -15px;
+        }
+
+        .chibi-hair::after {
+            width: 40px;
+            height: 60px;
+            top: 20px;
+            right: -15px;
+        }
+
+        /* Hair strands */
+        .hair-strand {
+            position: absolute;
+            background: #2c1810;
+            border-radius: 50%;
+        }
+
+        .hair-strand.left {
+            width: 30px;
+            height: 80px;
+            top: 30px;
+            left: -20px;
+            transform: rotate(-15deg);
+        }
+
+        .hair-strand.right {
+            width: 30px;
+            height: 80px;
+            top: 30px;
+            right: -20px;
+            transform: rotate(15deg);
+        }
+
+        /* Chibi Eyes */
+        .chibi-eyes {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 30px;
+            z-index: 2;
+        }
+
+        .chibi-eye {
+            width: 22px;
+            height: 26px;
+            background: #2c1810;
+            border-radius: 50% 50% 50% 50%;
+            position: absolute;
+            top: 0;
+        }
+
+        .chibi-eye.left { left: 8px; }
+        .chibi-eye.right { right: 8px; }
+
+        .eye-shine {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            left: 4px;
+        }
+
+        .eye-pupil {
+            width: 14px;
+            height: 14px;
+            background: #4a3728;
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            left: 4px;
+        }
+
+        /* Chibi Blush */
+        .chibi-blush {
+            width: 20px;
+            height: 12px;
+            background: #ffb6c1;
+            border-radius: 50%;
+            position: absolute;
+            top: 60px;
+            opacity: 0.6;
+        }
+
+        .chibi-blush.left { left: 5px; }
+        .chibi-blush.right { right: 5px; }
+
+        /* Chibi Mouth */
+        .chibi-mouth {
+            width: 18px;
+            height: 12px;
+            border: 2px solid #2c1810;
+            border-top: none;
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Chibi Body */
+        .chibi-body {
+            width: 80px;
+            height: 60px;
+            background: #90d4a8;
+            position: absolute;
+            top: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 15px 15px 25px 25px;
+        }
+
+        /* Floral pattern on dress */
+        .floral-pattern {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f4d03f;
+        }
+
+        .floral-pattern:nth-child(1) { top: 10px; left: 15px; }
+        .floral-pattern:nth-child(2) { top: 25px; right: 15px; background: #85c88a; }
+        .floral-pattern:nth-child(3) { top: 40px; left: 25px; background: #6ab187; }
+
+        /* Chibi Arms */
+        .chibi-arm {
+            width: 20px;
+            height: 45px;
+            background: #ffd4a3;
+            position: absolute;
+            top: 100px;
+            border-radius: 10px;
+        }
+
+        .chibi-arm.left { left: 15px; transform: rotate(-20deg); }
+        .chibi-arm.right { right: 15px; transform: rotate(20deg); }
+
+        /* Mood Label */
+        .mood-label {
+            text-align: center;
+            font-size: 1.3em;
+            color: #8e44ad;
+            font-weight: bold;
+            padding: 10px;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        .mood-description {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff5e6;
+            border-radius: 15px;
+            font-size: 1.1em;
+            color: #555;
+            border-left: 4px solid #ff6b9d;
+        }
+
+        /* Specific mood variations */
+        .chibi-happy .chibi-mouth {
+            border-radius: 0 0 70% 70%;
+            height: 15px;
+        }
+
+        .chibi-happy .chibi-eye {
+            height: 28px;
+        }
+
+        .chibi-excited .chibi-eye {
+            height: 30px;
+            width: 24px;
+            animation: sparkleEyes 1s infinite;
+        }
+
+        @keyframes sparkleEyes {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .chibi-shy .chibi-eyes {
+            opacity: 0.7;
+        }
+
+        .chibi-shy .chibi-mouth {
+            width: 12px;
+            height: 8px;
+        }
+
+        .chibi-shy .chibi-blush {
+            width: 25px;
+            opacity: 0.8;
+        }
+
+        .chibi-crying .chibi-eye {
+            height: 20px;
+            border-radius: 50% 50% 40% 40%;
+        }
+
+        .chibi-crying::after {
+            content: '💧';
+            position: absolute;
+            font-size: 1.5em;
+            top: 70px;
+            left: 20px;
+            animation: tearDrop 2s infinite;
+        }
+
+        @keyframes tearDrop {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(30px); opacity: 0; }
+        }
+
+        .chibi-sleepy .chibi-eye {
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .chibi-angry .chibi-mouth {
+            border-radius: 50% 50% 0 0;
+            border-bottom: none;
+            border-top: 2px solid #2c1810;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .chibi-angry::before {
+            content: '💢';
+            position: absolute;
+            font-size: 2em;
+            top: -10px;
+            right: -10px;
+            animation: angryPulse 0.5s infinite;
+        }
+
+        @keyframes angryPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .chibi-calm .chibi-eye {
+            height: 8px;
+        }
+
+        .chibi-calm .chibi-mouth {
+            width: 14px;
+            height: 4px;
+        }
+
+        .chibi-sad .chibi-eye {
+            height: 24px;
+            border-radius: 50% 50% 45% 45%;
+        }
+
+        .chibi-sad .chibi-mouth {
+            border-radius: 50% 50% 0 0;
+            border-top: 2px solid #2c1810;
+            border-bottom: none;
+        }
+
+        .interactive-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255,107,157,0.4);
+            font-weight: bold;
+            margin: 20px 10px;
+        }
+
+        .interactive-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(255,107,157,0.6);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .reveal {
+            animation: revealAnim 1s forwards;
+        }
+
+        @keyframes revealAnim {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .confession-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 30px 0;
+            border: 5px dashed #ff6b9d;
+        }
+
+        .confession-box h2 {
+            color: #8e44ad;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .confession-box p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2em;
+            animation: floatUp 3s ease-in infinite;
+            z-index: 9999;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .question-section {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .choice-btn {
+            background: white;
+            color: #ff6b9d;
+            border: 3px solid #ff6b9d;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 15px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .choice-btn:hover {
+            background: #ff6b9d;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkleAnim 1s infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+
+        .story-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .memory-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b9d;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .memory-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(255,107,157,0.3);
+        }
+
+        .memory-card h3 {
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 1.5em;
+            line-height: 2;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #ffecd2;
+        }
+
+        .click-hint {
+            text-align: center;
+            color: #8e44ad;
+            font-size: 1.1em;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero section">
+            <h1>Hey Anshita! 🎭</h1>
+            <p class="subtitle">This is going to be fun... I promise! 😊</p>
+            <p style="color: #555; font-size: 1.2em; margin-top: 20px;">
+                Someone wanted to tell you something...<br>
+                And they thought the best way was to make it a little adventure!
+            </p>
+            <button class="interactive-btn" onclick="startJourney()">Let's Begin! ✨</button>
+        </div>
+
+        <div id="journey" class="hidden">
+            <div class="section story-section">
+                <h2 style="color: #8e44ad; text-align: center; margin-bottom: 30px;">
+                    First, Someone Created These... 🎨
+                </h2>
+                <p style="font-size: 1.2em; color: #555; text-align: center; margin-bottom: 30px;">
+                    They spent time making these chibi versions of you in different moods!<br>
+                    Click on each one to see what they noticed about you 💭
+                </p>
+                <p class="click-hint">👆 Click on each character! 👆</p>
+
+                <div class="chibi-showcase">
+                    <!-- Happy Chibi -->
+                    <div class="chibi-card" onclick="revealMood(this, 'That genuine smile when you\'re happy... it lights up the whole room! Your happiness is absolutely contagious! 🌟')">
+                        <div class="chibi-character chibi-happy">
+                            <div class="chibi-hair">
+                                <div class="hair-strand left"></div>
+                                <div class="hair-strand right"></div>
+                            </div>
+                            <div class="chibi-head">
+                                <div class="chibi-eyes">
+                                    <div class="chibi-eye left">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                    <div class="chibi-eye right">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="chibi-blush left"></div>
+                                <div class="chibi-blush right"></div>
+                                <div class="chibi-mouth"></div>
+                            </div>
+                            <div class="chibi-body">
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                            </div>
+                            <div class="chibi-arm left"></div>
+                            <div class="chibi-arm right"></div>
+                        </div>
+                        <div class="mood-label">Happy 😊</div>
+                        <div class="mood-description"></div>
+                    </div>
+
+                    <!-- Excited Chibi -->
+                    <div class="chibi-card" onclick="revealMood(this, 'Your excitement is EVERYTHING! The way your eyes light up, the energy you bring... it\'s why they call you the Excitement Queen! ⚡👑')">
+                        <div class="chibi-character chibi-excited">
+                            <div class="chibi-hair">
+                                <div class="hair-strand left"></div>
+                                <div class="hair-strand right"></div>
+                            </div>
+                            <div class="chibi-head">
+                                <div class="chibi-eyes">
+                                    <div class="chibi-eye left">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                    <div class="chibi-eye right">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="chibi-blush left"></div>
+                                <div class="chibi-blush right"></div>
+                                <div class="chibi-mouth"></div>
+                            </div>
+                            <div class="chibi-body">
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                            </div>
+                            <div class="chibi-arm left"></div>
+                            <div class="chibi-arm right"></div>
+                        </div>
+                        <div class="mood-label">Excited! 🎉</div>
+                        <div class="mood-description"></div>
+                    </div>
+
+                    <!-- Shy Chibi -->
+                    <div class="chibi-card" onclick="revealMood(this, 'That shy look when you\'re feeling a bit reserved... it\'s adorable! Those little moments when you\'re not your usual excited self are special too 💕')">
+                        <div class="chibi-character chibi-shy">
+                            <div class="chibi-hair">
+                                <div class="hair-strand left"></div>
+                                <div class="hair-strand right"></div>
+                            </div>
+                            <div class="chibi-head">
+                                <div class="chibi-eyes">
+                                    <div class="chibi-eye left">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                    <div class="chibi-eye right">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="chibi-blush left"></div>
+                                <div class="chibi-blush right"></div>
+                                <div class="chibi-mouth"></div>
+                            </div>
+                            <div class="chibi-body">
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                            </div>
+                            <div class="chibi-arm left"></div>
+                            <div class="chibi-arm right"></div>
+                        </div>
+                        <div class="mood-label">Shy... 🥺</div>
+                        <div class="mood-description"></div>
+                    </div>
+
+                    <!-- Laughing Chibi -->
+                    <div class="chibi-card" onclick="revealMood(this, 'Your laugh... oh man, your laugh! It\'s the kind that makes everyone else want to laugh too. Pure joy! 😄')">
+                        <div class="chibi-character chibi-happy">
+                            <div class="chibi-hair">
+                                <div class="hair-strand left"></div>
+                                <div class="hair-strand right"></div>
+                            </div>
+                            <div class="chibi-head">
+                                <div class="chibi-eyes">
+                                    <div class="chibi-eye left">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                    <div class="chibi-eye right">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="chibi-blush left"></div>
+                                <div class="chibi-blush right"></div>
+                                <div class="chibi-mouth"></div>
+                            </div>
+                            <div class="chibi-body">
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                            </div>
+                            <div class="chibi-arm left"></div>
+                            <div class="chibi-arm right"></div>
+                        </div>
+                        <div class="mood-label">Laughing 😆</div>
+                        <div class="mood-description"></div>
+                    </div>
+
+                    <!-- Teasing Look Chibi -->
+                    <div class="chibi-card" onclick="revealMood(this, 'THAT LOOK! You know exactly which one. When you\'re being teased and you give that look back... absolutely priceless! It\'s playful, it\'s fun, it\'s... memorable 👀✨')">
+                        <div class="chibi-character">
+                            <div class="chibi-hair">
+                                <div class="hair-strand left"></div>
+                                <div class="hair-strand right"></div>
+                            </div>
+                            <div class="chibi-head">
+                                <div class="chibi-eyes">
+                                    <div class="chibi-eye left">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                    <div class="chibi-eye right">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="chibi-blush left"></div>
+                                <div class="chibi-blush right"></div>
+                                <div class="chibi-mouth"></div>
+                            </div>
+                            <div class="chibi-body">
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                            </div>
+                            <div class="chibi-arm left"></div>
+                            <div class="chibi-arm right"></div>
+                        </div>
+                        <div class="mood-label">That Look 👀</div>
+                        <div class="mood-description"></div>
+                    </div>
+
+                    <!-- Calm Chibi -->
+                    <div class="chibi-card" onclick="revealMood(this, 'Your calm moments are peaceful and beautiful. There\'s something special about seeing you relaxed and at ease 🌸')">
+                        <div class="chibi-character chibi-calm">
+                            <div class="chibi-hair">
+                                <div class="hair-strand left"></div>
+                                <div class="hair-strand right"></div>
+                            </div>
+                            <div class="chibi-head">
+                                <div class="chibi-eyes">
+                                    <div class="chibi-eye left">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                    <div class="chibi-eye right">
+                                        <div class="eye-shine"></div>
+                                    </div>
+                                </div>
+                                <div class="chibi-blush left"></div>
+                                <div class="chibi-blush right"></div>
+                                <div class="chibi-mouth"></div>
+                            </div>
+                            <div class="chibi-body">
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                                <div class="floral-pattern"></div>
+                            </div>
+                            <div class="chibi-arm left"></div>
+                            <div class="chibi-arm right"></div>
+                        </div>
+                        <div class="mood-label">Calm... ☮️</div>
+                        <div class="mood-description"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section confession-box">
+                <h2>About That Cricket Day... 🏏</h2>
+                <p>
+                    Remember spending almost the whole day together at the tournament?<br>
+                    The way you played with such joy...<br>
+                    The way every moment felt so... natural and fun...<br><br>
+                    That's when someone realized something was happening. 💭
+                </p>
+                <p style="margin-top: 20px; font-size: 1.1em; color: #ff6b9d;">
+                    Every time we're together, time just... disappears differently.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 style="color: #8e44ad; text-align: center; margin-bottom: 30px;">
+                    Quick Question! 🤔
+                </h2>
+                <p style="text-align: center; font-size: 1.2em; color: #555; margin-bottom: 30px;">
+                    In just one month, can someone really start to care about someone?<br>
+                    Or does it always take longer?
+                </p>
+                <div style="text-align: center;">
+                    <button class="choice-btn" onclick="showNext('time')">It takes time</button>
+                    <button class="choice-btn" onclick="showNext('moment')">Sometimes it just clicks ✨</button>
+                </div>
+            </div>
+
+            <div id="reveal-section" class="section confession-box hidden">
+                <h2><span class="sparkle">✨</span> Okay, here's the real talk, Anshita <span class="sparkle">✨</span></h2>
+                <p style="margin: 30px 0; font-size: 1.3em;">
+                    It's been just a month...<br>
+                    You're only here for 3 months total...<br>
+                    We don't have much time...<br><br>
+                    
+                    But here's what I DO know: <span style="color: #ff6b9d; font-weight: bold;">I like you.</span> 💕
+                </p>
+                <p style="margin: 30px 0; font-size: 1.2em;">
+                    Not in a "let's rush into anything" way...<br>
+                    More in a "I want to know the REAL you" way.<br>
+                    I want to spend more time together.<br>
+                    I want to know what makes you laugh, what excites you, what you dream about.
+                </p>
+                <p style="margin: 30px 0; font-size: 1.1em; color: #8e44ad;">
+                    You said you're "fine with everything" when asked about your interests...<br>
+                    But I don't want to know what you're fine with.<br>
+                    I want to discover what makes YOUR eyes light up! ✨
+                </p>
+            </div>
+
+            <div id="question-section" class="section question-section hidden">
+                <h2 style="color: #8e44ad; margin-bottom: 30px;">So... 💭</h2>
+                <p style="font-size: 1.3em; margin-bottom: 30px; color: #555;">
+                    Would you give me (us) a chance to spend more time together?<br>
+                    No pressure, no expectations...<br>
+                    Just two people getting to know each other better? 🌟
+                </p>
+                <div>
+                    <button class="interactive-btn" onclick="showResponse('yes')">Let's do it! 🎉</button>
+                    <button class="interactive-btn" onclick="showResponse('maybe')">I need to think... 🤔</button>
+                    <button class="interactive-btn" onclick="showResponse('curious')">Tell me who you are first! 💭</button>
+                </div>
+            </div>
+
+            <div id="response-section" class="hidden">
+                <div id="yes-response" class="section final-message hidden">
+                    <h2>🎉 YASSS! 🎉</h2>
+                    <p>This is exciting! (See what I did there? 😄)</p>
+                    <p>Let's make these next 2 months count!</p>
+                    <p>Coffee? Lunch? Just hanging out? You pick! ☕🍕🎮</p>
+                    <p class="signature">- From Someone Who Thinks You're Pretty Amazing 🌟<br>(And calls you their little Munchkin 🧁)</p>
+                </div>
+
+                <div id="maybe-response" class="section final-message hidden">
+                    <h2>Totally Fair! 💭</h2>
+                    <p>Take all the time you need!</p>
+                    <p>No rush, no pressure. I'll still be here being mysteriously awkward 😅</p>
+                    <p>And hey, even if it's just as friends, I'd still love to know you better!</p>
+                    <p class="signature">- From Your Patient Mystery Person 🎭<br>(Who might slip and call you Munchkin by accident 🧁)</p>
+                </div>
+
+                <div id="curious-response" class="section final-message hidden">
+                    <h2>Fair Question! 💬</h2>
+                    <p>Let me give you some hints... 🕵️</p>
+                    <p style="font-size: 1.2em; margin: 30px 0;">
+                        🎯 I was there on cricket day<br>
+                        🎯 I tease you (and love that look you give back)<br>
+                        🎯 I think your excitement is adorable<br>
+                        🎯 I've been calling you something special in my head...<br>
+                        <span style="font-size: 1.4em; color: #ffecd2;">...rhymes with "unchkin" 🧁</span>
+                    </p>
+                    <p>Still curious? Ask our mutual friend! 😊</p>
+                    <p class="signature">- From Someone Who's Probably Obvious By Now 😅</p>
+                </div>
+            </div>
+
+            <div class="section" style="text-align: center; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                <h3 style="color: #8e44ad; margin-bottom: 20px;">P.S. 📝</h3>
+                <p style="font-size: 1.2em; color: #555; line-height: 1.8;">
+                    Whatever your answer is, this page already did its job — telling you that you matter.<br>
+                    If you're trying to figure out who this is...<br>
+                    Look for someone who:<br>
+                    ⚡ Genuinely believes you're the Excitement Queen<br>
+                    👀 Remembers "that look" way too clearly<br>
+                    🧁 Might have already given you a cute nickname<br>
+                    😅 Is probably nervous about your reaction right now
+                </p>
+                <p style="margin-top: 30px; font-size: 1.3em; color: #ff6b9d; font-weight: bold;">
+                    Time flies… and there are still 2 months to make some nice memories. ⏰💕
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let moodsRevealed = 0;
+        const totalMoods = 6;
+
+        function startJourney() {
+            document.getElementById('journey').classList.remove('hidden');
+            document.getElementById('journey').scrollIntoView({ behavior: 'smooth' });
+            createHearts();
+        }
+
+        function revealMood(element, message) {
+            const description = element.querySelector('.mood-description');
+            if (description.style.display === 'block') return; // Already revealed
+            
+            description.textContent = message;
+            description.style.display = 'block';
+            element.style.transform = 'scale(1.05)';
+            element.style.borderColor = '#ff6b9d';
+            
+            moodsRevealed++;
+            
+            // After revealing all moods, scroll to next section
+            if (moodsRevealed === totalMoods) {
+                setTimeout(() => {
+                    document.querySelector('.confession-box').scrollIntoView({ behavior: 'smooth' });
+                }, 1500);
+            }
+        }
+
+        function showNext(choice) {
+            const revealSection = document.getElementById('reveal-section');
+            revealSection.classList.remove('hidden');
+            revealSection.classList.add('reveal');
+            revealSection.scrollIntoView({ behavior: 'smooth' });
+            
+            setTimeout(() => {
+                const questionSection = document.getElementById('question-section');
+                questionSection.classList.remove('hidden');
+                questionSection.classList.add('reveal');
+                questionSection.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        function showResponse(type) {
+            const responseSection = document.getElementById('response-section');
+            responseSection.classList.remove('hidden');
+            
+            const response = document.getElementById(`${type}-response`);
+            response.classList.remove('hidden');
+            response.classList.add('reveal');
+            response.scrollIntoView({ behavior: 'smooth' });
+            
+            createConfetti();
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-hearts';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 3000);
+            }, 300);
+        }
+
+        function createConfetti() {
+            const emojis = ['🎉', '✨', '💕', '🌟', '💫', '🎊', '🧁'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'floating-hearts';
+                    confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.fontSize = (Math.random() * 2 + 1) + 'em';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // Easter egg: Click counter
+        let clickCount = 0;
+        document.addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 50) {
+                alert('Wow! You really explored everything! 😄 Someone definitely put thought into this for you! 💕');
+            }
+        });
+
+        // Secret: Press M+U+N+C+H+K+I+N in sequence
+        let secretSequence = '';
+        const secret = 'munchkin';
+        document.addEventListener('keypress', function(e) {
+            secretSequence += e.key.toLowerCase();
+            if (secretSequence.length > secret.length) {
+                secretSequence = secretSequence.slice(-secret.length);
+            }
+            if (secretSequence === secret) {
+                alert('🧁 You found the secret! Yes, YOU are the Munchkin they\'re talking about! 💕');
+                createConfetti();
+            }
+        });
+    </script>
+</body>
+</html>
